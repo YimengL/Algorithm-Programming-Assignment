@@ -7,4 +7,4 @@ log:
 
 2, FINISH Week 2 Programming Assignment(2015/Feb/08 Sun 22:23)
 
-
+3, FINISH Week 2 Programming Assignment(2015/Feb/08 Sat 22:00)
