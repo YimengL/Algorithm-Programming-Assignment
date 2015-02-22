@@ -15,6 +15,8 @@
 
 using namespace std;
 
+const int TIMES = 5000;
+
 /* function prototype */
 void store_file(vector<vector<int> >&, string);
 void print_adjacency_list(vector<vector<int> >&);
@@ -27,18 +29,16 @@ int main(int argc, char** argv) {
 
 	vector<vector<int> > adjacency_list;
 	/* store the elements in txt file into adjacency list */
-	store_file(adjacency_list, "200.txt");
+	store_file(adjacency_list, "40.txt");
 	vector<vector<int>> tmp = adjacency_list;
 	print_adjacency_list(adjacency_list);
 	srand((unsigned)time(NULL));
 
-
 	/* karger contraction */
 	int min_cut = INT_MAX;
-	for (int i = 0; i < 92041; ++i) {
+	for (int i = 0; i < TIMES; ++i) {
 		adjacency_list = tmp;
 		int inter_val = contraction(adjacency_list);
-//		cout << inter_val << endl;
 		min_cut = min(inter_val, min_cut);
 		cout << min_cut << ": " << i << endl;
 	}
@@ -79,7 +79,6 @@ int contraction(vector<vector<int>>& adjacency_list) {
 		int index_u = 0;
 		int index_v = 0;
 		random_pick(adjacency_list ,index_u, index_v);
-//		cout << adjacency_list[index_u][0] << "-" << adjacency_list[index_v][0] << endl;
 		merge_vertex(adjacency_list, index_u, index_v);
 		remove_loop(adjacency_list, index_u, index_v);
 	}
@@ -112,8 +111,7 @@ void merge_vertex(vector<vector<int>>& adjacency_list, int& index_u, int& index_
 		adjacency_list[index_u].push_back(adjacency_list[index_v][i]);
 }
 
-
-
+/* remove self-loop */
 void remove_loop(vector<vector<int>>& adjacency_list, int& index_u, int& index_v) {
 	for (int i = 1; i < adjacency_list[index_u].size(); ++i)
 		if (adjacency_list[index_u][i] == adjacency_list[index_u][0]) {
@@ -121,5 +119,4 @@ void remove_loop(vector<vector<int>>& adjacency_list, int& index_u, int& index_v
 			--i;
 		}
 	adjacency_list.erase(adjacency_list.begin() + index_v);
-//	print_adjacency_list(adjacency_list);
 }
