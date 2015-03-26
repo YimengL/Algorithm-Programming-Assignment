@@ -18,14 +18,19 @@ vector<job> joblist;
 
 void store_file(string);
 void print_all(void);
-bool my_compare(job, job);
+bool my_compare_1(job, job);
+bool my_compare_2(job, job);
 long complete_time(void);
 
 int main(int argc, char** argv) {
 	store_file("jobs.txt");
-	sort(joblist.begin(), joblist.end(), my_compare);
+	sort(joblist.begin(), joblist.end(), my_compare_1);
 	long t = complete_time();
-	cout << "Complete time: " << t << endl;
+	cout << "(diff version)Complete time: " << t << endl;
+
+	sort(joblist.begin(), joblist.end(), my_compare_2);
+	t = complete_time();
+	cout << "(ratio version)Complete time: " << t << endl;
 	return 0;
 }
 
@@ -50,12 +55,23 @@ void print_all(void) {
 	cout << endl;
 }
 
-bool my_compare(job job1, job job2) {
+bool my_compare_1(job job1, job job2) {
 	int diff1 = job1.weight - job1.len;
 	int diff2 = job2.weight - job2.len;
 	if (diff1 > diff2)
 		return true;
 	else if (diff1 < diff2)
+		return false;
+	else
+		return (job1.weight > job2.weight);
+}
+
+bool my_compare_2(job job1, job job2) {
+	double ratio1 = 1.0 * job1.weight / job1.len;
+	double ratio2 = 1.0 * job2.weight / job2.len;
+	if (ratio1 > ratio2)
+		return true;
+	else if (ratio1 < ratio2)
 		return false;
 	else
 		return (job1.weight > job2.weight);
