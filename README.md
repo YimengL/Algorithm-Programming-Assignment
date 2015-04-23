@@ -10,5 +10,6 @@ log:
 * FINISH Week 5 Programming Assignment(2015/March/02 Mon 02:55)
 * FINISH Week 6 Programming Assignment(2015/March/23 Mon 01:18)
 * FINISH Week 7 Programming Assignment(2015/March/26 Thu 17:16)
-* FINISH Week 8 Programming Assignment(2015/April/12 Sunday 22:59)
-* FINISH Week 9 Programming Assignment(2015/April/20 Monday 3:13)
+* FINISH Week 8 Programming Assignment(2015/April/12 Sun 22:59)
+* FINISH Week 9 Programming Assignment(2015/April/20 Mon 03:13)
+* FINISH Week 10 Programming Assignment(2015/April/23 Thu 00:59)
